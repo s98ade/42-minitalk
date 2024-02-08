@@ -1,8 +1,10 @@
-NAMEC = client
-NAMES = server
+NAME = minitalk
 
-SRCC = client.c 
+SERVER = server
+CLIENT = client
+
 SRCS = server.c 
+SRCC = client.c 
 
 OBJC = $(SRCC:%.c%.o)
 OBJS = $(SRCS:%.c%.o)
@@ -10,7 +12,7 @@ OBJS = $(SRCS:%.c%.o)
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
 
-all:	$(NAMEC) $(NAMES)
+all:	$(SERVER) $(CLIENT)
 
 GREEN = \033[0;32m
 BLUE = \033[0;34m
@@ -19,22 +21,23 @@ NC = \033[0m
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
-$(NAMEC): $(OBJC)
+$(SRCS): $(OBJS) minitalk.h
 	make -C ./Libft
-	@$(CC) $(CFLAGS) $(OBJC) ./Libft/libft.a -o $(NAME)
-	@echo "$(GREEN)Compilation of '$(NAMEC)' completed successfully$(NC)"
-$(NAMES): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAMES)
+	@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a -o $(SRCS)
+	@echo "$(GREEN)Compilation of '$(SERVER)' completed successfully$(NC)"
+$(SRCC): $(OBJC) minitalk.h
+	$(CC) $(CFLAGS) $(OBJC) -o $(SRCC)
+	@echo "$(GREEN)Compilation of '$(CLIENT)' completed successfully$(NC)"
 
 clean:
 	make clean -C ./Libft
-	@/bin/rm -rf $(OBJC) $(OBJS)
+	@/bin/rm -rf $(OBJS) $(OBJC)
 	@echo "$(BLUE)Removed object-files!$(NC)"
 
 fclean:
 	make fclean -C ./Libft
-	@/bin/rm -rf $(NAMEC) $(OBJC) $(NAMES) $(OBJS)
-	@echo "$(BLUE)Removed '$(NAMEC) and '$(NAMES)'$(NC)"
+	@/bin/rm -rf $(SERVER) $(OBJS) $(CLIENT) $(OBJC)
+	@echo "$(BLUE)Removed '$(SERVER)' and '$(CLIENT)'$(NC)"
 
 re: fclean all
 	@echo "$(GREEN)Everything recompiled$(NC)"
