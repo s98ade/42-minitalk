@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 10:45:08 by sade              #+#    #+#             */
-/*   Updated: 2023/11/14 14:54:55 by sade             ###   ########.fr       */
+/*   Updated: 2024/02/08 20:34:03 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen((char *)s1) - 1;
 	while (start <= end && ft_strchr(set, s1[start]))
 		++start;
-	while (end >= 0 && ft_strchr(set, s1[end]))
+	while (end > 0 && ft_strchr(set, s1[end]))
 		--end;
 	trimmed_len = end - start + 1;
 	trimmed = ft_substr(s1 + start, 0, trimmed_len);

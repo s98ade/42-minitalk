@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:22:41 by sade              #+#    #+#             */
-/*   Updated: 2023/11/13 12:03:36 by sade             ###   ########.fr       */
+/*   Updated: 2024/02/08 20:34:47 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 static void	ft_max_min_fd(int fd)
 {
 	const char	*str;
-	int			i;
 
 	str = "-2147483648";
-	i = 0;
 	while (*str)
 	{
 		ft_putchar_fd(*str, fd);

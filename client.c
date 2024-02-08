@@ -6,22 +6,22 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 10:48:26 by sade              #+#    #+#             */
-/*   Updated: 2024/02/06 12:58:23 by sade             ###   ########.fr       */
+/*   Updated: 2024/02/08 21:23:35 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void    handler_sigusr(int signum)
+static void    handler_sigusr(int signum)
 {
     if(signum == SIGUSR2)
     {
-        ft_putstr_fd("Send succesfully.\n", 1);
+        ft_putstr_fd("Sending completed.\n", 1);
         exit(0);
     }
 }
 
-void send_msg(pid_t pid, char *msg)
+static void send_msg(pid_t pid, char *msg)
 {
     unsigned char c;
     int bits;
