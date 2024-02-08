@@ -11,6 +11,7 @@ OBJS = $(SRCS:%.c%.o)
 
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
+LIBFT = Libft/libft.a
 
 all:	$(SERVER) $(CLIENT)
 
@@ -26,7 +27,7 @@ $(SRCS): $(OBJS) minitalk.h
 	@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a -o $(SRCS)
 	@echo "$(GREEN)Compilation of '$(SERVER)' completed successfully$(NC)"
 $(SRCC): $(OBJC) minitalk.h
-	$(CC) $(CFLAGS) $(OBJC) -o $(SRCC)
+	$(CC) $(CFLAGS) $(OBJC) ./Libft/libft.a -o $(SRCC)
 	@echo "$(GREEN)Compilation of '$(CLIENT)' completed successfully$(NC)"
 
 clean:
