@@ -22,12 +22,12 @@ NC = \033[0m
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
-$(SRCS): $(OBJS) minitalk.h
+$(NAMES): $(OBJS) minitalk.h
 	make -C ./Libft
-	@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a -o $(SRCS)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(SRCS)
 	@echo "$(GREEN)Compilation of '$(SERVER)' completed successfully$(NC)"
-$(SRCC): $(OBJC) minitalk.h
-	$(CC) $(CFLAGS) $(OBJC) ./Libft/libft.a -o $(SRCC)
+$(NAMEC): $(OBJC) minitalk.h
+	$(CC) $(CFLAGS) $(OBJC) $(LIBFT) -o $(SRCC)
 	@echo "$(GREEN)Compilation of '$(CLIENT)' completed successfully$(NC)"
 
 clean:
