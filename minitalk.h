@@ -6,14 +6,14 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 10:48:49 by sade              #+#    #+#             */
-/*   Updated: 2024/02/09 11:19:03 by sade             ###   ########.fr       */
+/*   Updated: 2024/02/20 13:43:53 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-#define CLIENT_H
+#ifndef MINITALK_H
+#define MINITALK_H
 
-#include "../Libft/libft.h"
+#include "Libft/libft.h"
 #include <unistd.h>
 #include <signal.h>
 #include <stdlib.h>

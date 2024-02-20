@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 10:48:38 by sade              #+#    #+#             */
-/*   Updated: 2024/02/09 10:43:54 by sade             ###   ########.fr       */
+/*   Updated: 2024/02/20 14:08:34 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main(void)
     pid_t pid;
 
     pid = getpid();
+    printf("Server successfully started.\n");
     printf("The server PID is: %d\n", pid);
     sa.sa_flags = SA_SIGINFO;
     sa.sa_sigaction = &handle_sigusr;
@@ -58,5 +59,4 @@ int main(void)
         handle_error("SIGUSR2 Error");
     while (1)
         pause();
-    return (0);
 }
