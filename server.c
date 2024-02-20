@@ -6,12 +6,11 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 10:48:38 by sade              #+#    #+#             */
-/*   Updated: 2024/02/20 14:08:34 by sade             ###   ########.fr       */
+/*   Updated: 2024/02/20 18:37:58 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include<stdio.h>
 
 void    handle_error(char *error_msg)
 {
@@ -49,8 +48,8 @@ int main(void)
     pid_t pid;
 
     pid = getpid();
-    printf("Server successfully started.\n");
-    printf("The server PID is: %d\n", pid);
+    ft_printf("Server successfully started.\n");
+    ft_printf("The server PID is: %d\n", pid);
     sa.sa_flags = SA_SIGINFO;
     sa.sa_sigaction = &handle_sigusr;
     if(sigaction(SIGUSR1, &sa, NULL) == -1)
