@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 10:48:26 by sade              #+#    #+#             */
-/*   Updated: 2024/02/22 09:44:26 by sade             ###   ########.fr       */
+/*   Updated: 2024/02/26 17:45:07 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,27 @@ void    handle_sigusr(int signum)
         exit(0);
 }
 
-static void send_char(pid_t pid, char *msg)
+int send_char(pid_t pid, char c_msg)
 {
-    unsigned char c;
-    int bits;
+    unsigned char bit;
 
-    while (*msg)
+    bit = 0b10000000;
+    while (bit)
     {
-        c = *msg;
-        bits = 8;
-        while (--bits)
+        if (bit & c_msg)
         {
-            if (c & 0b10000000)
-                kill(pid, SIGUSR1);
-            else
-                kill(pid, SIGUSR2);
-            usleep(50);
-            c <<= 1;
+            if (kill(pid, SIGUSR1) == -1)
+                return(0);
         }
-        ++msg;
+        else
+        {
+            if (kill(pid, SIGUSR2) == -1)
+                return(0);
+        }
+        bit >>= 1;
+        usleep(50);
     }
+    return(1);
 }
 
 static void send_msg(pid_t pid, char *str)
