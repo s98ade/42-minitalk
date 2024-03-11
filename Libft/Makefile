@@ -1,3 +1,4 @@
+NAME = libft.a
 SRCS = \
 	   ft_isalnum.c \
 	   ft_itoa.c \
@@ -32,15 +33,27 @@ SRCS = \
 	   ft_strlcat.c \
 	   ft_strnstr.c \
 	   ft_toupper.c \
-	   ft_split.c
+	   ft_split.c \
+	   ft_print_chr.c \
+	   ft_print_digit.c \
+	   ft_print_hex_lower.c \
+	   ft_print_hex_upper.c \
+	   ft_print_percent.c \
+	   ft_print_ptr.c \
+	   ft_print_str.c \
+	   ft_print_unsigned.c \
+	   ft_printf.c \
+	   get_next_line_utils.c \
+	   get_next_line.c
 
 OBJS = $(SRCS:.c=.o)
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = libft.a
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
@@ -53,6 +66,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean re

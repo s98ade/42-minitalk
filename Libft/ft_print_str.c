@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 10:48:49 by sade              #+#    #+#             */
-/*   Updated: 2024/03/11 10:19:29 by sade             ###   ########.fr       */
+/*   Created: 2023/11/20 09:19:33 by sade              #+#    #+#             */
+/*   Updated: 2024/03/11 09:59:42 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "libft.h"
 
-#include "./Libft/libft.h"
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-typedef struct s_info
+int	ft_print_str(char *str)
 {
-    char    *str;
-    char    tmp_char;
-    int     bit;
-    pid_t   pid;
-}               t_info;
+	int	i;
+	int	error;
 
-void    handle_error(char *error_msg);
-
-#endif
+	i = 0;
+	if (str == NULL)
+	{
+		error = write (1, "(null)", 6);
+		if (error == -1)
+			return (-1);
+		return (6);
+	}
+	while (str[i] != '\0')
+	{
+		error = write (1, &str[i], 1);
+		if (error == -1)
+			return (-1);
+		++i;
+	}
+	return (i);
+}

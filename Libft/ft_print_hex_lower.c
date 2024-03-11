@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_print_hex_lower.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 10:48:49 by sade              #+#    #+#             */
-/*   Updated: 2024/03/11 10:19:29 by sade             ###   ########.fr       */
+/*   Created: 2023/11/21 14:02:39 by sade              #+#    #+#             */
+/*   Updated: 2024/03/11 09:59:28 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "libft.h"
 
-#include "./Libft/libft.h"
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-typedef struct s_info
+int	ft_print_hex_lower(unsigned long n)
 {
-    char    *str;
-    char    tmp_char;
-    int     bit;
-    pid_t   pid;
-}               t_info;
+	int			count;
+	const char	*base;
+	int			error;
 
-void    handle_error(char *error_msg);
-
-#endif
+	base = "0123456789abcdef";
+	count = 0;
+	if (n >= 16)
+		count = ft_print_hex_lower(n / 16);
+	if (count == -1)
+		return (-1);
+	error = write (1, &base[n % 16], 1);
+	if (error == -1)
+		return (-1);
+	return (count + 1);
+}

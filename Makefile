@@ -9,7 +9,7 @@ OBJS = $(SRCS:%.c=%.o)
 
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
-LIBFT = Libft/libft.a
+LIBFT = ./Libft/libft.a
 
 all:	$(NAMES) $(NAMEC)
 

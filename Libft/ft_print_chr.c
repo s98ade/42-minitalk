@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_print_chr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 10:48:49 by sade              #+#    #+#             */
-/*   Updated: 2024/03/11 10:19:29 by sade             ###   ########.fr       */
+/*   Created: 2023/11/20 09:17:00 by sade              #+#    #+#             */
+/*   Updated: 2024/03/11 09:59:21 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "libft.h"
 
-#include "./Libft/libft.h"
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-typedef struct s_info
+int	ft_print_chr(int c)
 {
-    char    *str;
-    char    tmp_char;
-    int     bit;
-    pid_t   pid;
-}               t_info;
+	int	error;
 
-void    handle_error(char *error_msg);
-
-#endif
+	error = write (1, &c, 1);
+	if (error == -1)
+		return (-1);
+	return (1);
+}

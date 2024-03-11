@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 10:48:38 by sade              #+#    #+#             */
-/*   Updated: 2024/02/26 17:33:10 by sade             ###   ########.fr       */
+/*   Updated: 2024/03/11 10:18:38 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void handle_sigusr(int signum, siginfo_t *s_info, void *context)
     global_info.bit >>= 1;
     if (!global_info.bit && !global_info.tmp_char)
     {
-        printf("%s\n", global_info.str);
+        ft_printf("%s\n", global_info.str);
         reset(1);
     }
 }
@@ -90,8 +90,8 @@ int main(void)
     pid_t pid;
 
     pid = getpid();
-    printf("Server successfully started.\n");
-    printf("The server PID is: %d\n", pid);
+    ft_printf("Server successfully started.\n");
+    ft_printf("The server PID is: %d\n", pid);
     sa.sa_sigaction = &handle_sigusr;
     sa.sa_flags = SA_SIGINFO;
     if(sigaction(SIGUSR1, &sa, NULL) == -1)
