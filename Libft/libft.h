@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:13:54 by sade              #+#    #+#             */
-/*   Updated: 2024/03/11 10:09:10 by sade             ###   ########.fr       */
+/*   Updated: 2024/03/11 13:40:05 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void *ft_calloc(size_t count, size_t size);
 char *ft_strdup(const char *s1);
 // additional functions
 char *ft_substr(char const *s, unsigned int start, size_t len);
-/*char *ft_strjoin(char const *s1, char const *s2); HAS TO BE CHANGED WITH UPD VERSION*/
+char *ft_strjoin(char const *s1, char const *s2);
 char *ft_strtrim(char const *s1, char const *set);
 char **ft_split(char const *s, char c);
 char *ft_itoa(int n);
@@ -72,7 +72,7 @@ int	ft_print_percent(void);
 
 //get_next_line
 char	*get_next_line(int fd);
-char    *gnl_strjoin(char const *s1, char const *s2);
+char    *gnl_strjoin(char *b_s, char const *a_s);
 char	*ft_read_upd8(char *result, char *buffer, int fd);
 char	*ft_combine_line(char *result, char *buffer, int fd);
 size_t	gnl_strlen(const char *str);
