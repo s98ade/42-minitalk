@@ -18,7 +18,7 @@ A communication program should be created in the form of a client and a server.
 
 - use `make` to compile both client and server
 - start `./server` first: The PID will be displayed on the stdout
-- the client takes two arguments: the server PID and a string to send. Run it in a second terminal like so: `./client_bonus {process_id} {your_message}`.
+- the client takes two arguments: the server PID and a string to send. Run it in a second terminal like so: `./client {process_id} {your_message}`.
 
 Example:
 ```shell
